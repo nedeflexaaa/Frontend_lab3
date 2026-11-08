@@ -306,3 +306,16 @@ function renderProjects() {
 
     renderCosts();
 }
+
+function renderCosts() {
+    costResults = calculateNewCosts(projects);
+    const withNames = sortProjectsByCountry(costResults);
+    costTable.innerHTML = withNames.map((project) => {
+        return `<tr>
+            <td>${escapeHtml(project.name)}</td>
+            <td>${formatMoney(project.oldCost)}</td>
+            <td><span class="badge">${project.multiplier}×</span></td>
+            <td><strong>${formatMoney(project.newCost)}</strong></td>
+        </tr>`;
+    }).join("");
+}
