@@ -133,3 +133,22 @@ const escapeHtml = (value) => {
     const symbols = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" };
     return String(value).replace(/[&<>"']/g, (symbol) => symbols[symbol]);
 };
+
+function getContinent(country) {
+    switch (country) {
+        case "Україна":
+        case "Німеччина":
+        case "Велика Британія":
+            return "Європа";
+        case "США":
+        case "Канада":
+            return "Північна Америка";
+        case "Бразилія":
+            return "Південна Америка";
+        case "Японія":
+        case "Індія":
+            return "Азія";
+        default:
+            return "Не визначено";
+    }
+}
