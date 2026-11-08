@@ -20,6 +20,97 @@
                 і облікових записів користувачів на класах.
             </p>
         </section>
+
+        <section class="panel" id="projects" aria-labelledby="projects-title">
+            <div class="section-head">
+                <div>
+                    <p class="section-kicker">Завдання 1</p>
+                    <h2 id="projects-title">Проєкти компанії</h2>
+                </div>
+                <div class="button-row">
+                    <button class="btn btn-primary" id="recalcCosts" type="button">Перерахувати вартості</button>
+                    <button class="btn btn-ghost" id="resetProjects" type="button">Скинути дані</button>
+                </div>
+            </div>
+            <p class="section-lead">
+                Масив із 10 записів сортується за країною; для кожної команди обчислюється
+                середня вартість, визначається проєкт із максимальною командою, а новий
+                запис додається за правилом повноти даних.
+            </p>
+
+            <div class="summary-grid" id="projectSummary">
+                <article class="summary-card">
+                    <span class="summary-label">Максимальна команда</span>
+                    <strong id="maxTeamValue">—</strong>
+                    <span class="summary-note" id="maxTeamNote">—</span>
+                </article>
+                <article class="summary-card">
+                    <span class="summary-label">Проєкт із максимальною командою</span>
+                    <strong id="maxTeamId">—</strong>
+                    <span class="summary-note" id="maxTeamName">—</span>
+                </article>
+                <article class="summary-card">
+                    <span class="summary-label">Середня вартість команди</span>
+                    <strong id="teamAverageValue">—</strong>
+                    <span class="summary-note" id="teamAverageNote">—</span>
+                </article>
+                <article class="summary-card">
+                    <span class="summary-label">Записів у масиві</span>
+                    <strong id="projectCount">10</strong>
+                    <span class="summary-note">після додавання може стати 11</span>
+                </article>
+            </div>
+
+            <div class="table-block">
+                <h3>Відсортовано за країною</h3>
+                <div class="table-wrap">
+                    <table>
+                        <caption>Таблиця проєктів</caption>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Назва</th>
+                                <th>Країна</th>
+                                <th>Континент</th>
+                                <th>Команда</th>
+                                <th>Тривалість</th>
+                                <th>Вартість</th>
+                            </tr>
+                        </thead>
+                        <tbody id="projectsTable"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="table-block">
+                    <h3>Середня вартість за командою</h3>
+                    <div class="table-wrap">
+                        <table>
+                            <caption>Команда = країна + кількість осіб</caption>
+                            <thead>
+                                <tr><th>Країна</th><th>Команда</th><th>Проєктів</th><th>Середня вартість</th></tr>
+                            </thead>
+                            <tbody id="teamAverages"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="table-block">
+                    <h3>Оновлені вартості</h3>
+                    <div class="table-wrap">
+                        <table>
+                            <caption>Правило множника</caption>
+                            <thead>
+                                <tr><th>Назва</th><th>Було</th><th>Множник</th><th>Стало</th></tr>
+                            </thead>
+                            <tbody id="costTable"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            
+        </section>
     </main>
 
     <footer class="site-footer">
