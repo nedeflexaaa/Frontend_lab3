@@ -435,3 +435,27 @@ function operatorExamples() {
         `"apple" < "banana" → ${"apple" < "banana"}`
     ];
 }
+
+function arrayExamples() {
+    const values = [5, 2, 8, 1, 9, 3];
+    const pushed = [...values];
+    pushed.push(7);
+    const sorted = [...values].sort((first, second) => first - second);
+    const filtered = values.filter((value) => value > 4);
+    const mapped = values.map((value) => value * 2);
+    const reduced = values.reduce((sum, value) => sum + value, 0);
+    const found = values.find((value) => value > 7);
+    const some = values.some((value) => value % 2 === 0);
+    const every = values.every((value) => value > 0);
+    return [
+        `push(7) → [${pushed.join(", ")}]`,
+        `sort((a, b) => a - b) → [${sorted.join(", ")}]`,
+        `filter(value > 4) → [${filtered.join(", ")}]`,
+        `map(value * 2) → [${mapped.join(", ")}]`,
+        `reduce(sum) → ${reduced}`,
+        `find(value > 7) → ${found}`,
+        `some(парне) → ${some}`,
+        `every(> 0) → ${every}`,
+        `join(" — ") → ${values.join(" — ")}`
+    ];
+}
