@@ -438,3 +438,148 @@ td strong {
 .two-column table {
     min-width: 100%;
 }
+
+.project-form {
+    margin-top: 6px;
+    padding: 18px 20px;
+    border: 1px dashed #c9c0ae;
+    border-radius: 0;
+    background-color: #fbfaf6;
+}
+
+.form-note {
+    margin-bottom: 14px;
+    color: var(--muted);
+    font-size: 0.86rem;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.form-grid label,
+.filter-bar label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    color: var(--muted);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 9px 10px;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    background-color: #ffffff;
+    color: var(--text);
+    font: inherit;
+    font-size: 0.9rem;
+}
+
+input:focus,
+select:focus {
+    border-color: var(--navy);
+    outline: 2px solid rgba(22, 58, 95, 0.14);
+    outline-offset: 1px;
+}
+
+.form-actions {
+    margin-top: 16px;
+}
+
+.form-status {
+    min-height: 24px;
+    margin: 10px 0 0;
+    font-weight: 600;
+}
+
+.form-status.is-success {
+    color: var(--success);
+}
+
+.form-status.is-warning {
+    color: var(--warning);
+}
+
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 12px;
+    margin-bottom: 22px;
+    padding: 14px;
+    border: 1px solid var(--line);
+    border-radius: 0;
+    background-color: #fbfaf6;
+}
+
+.filter-bar label {
+    width: 150px;
+}
+
+.filter-period {
+    align-self: center;
+    margin-left: auto;
+    color: var(--navy);
+    font-weight: 700;
+}
+
+.site-footer {
+    padding: 20px 0;
+    background-color: var(--navy-dark);
+    color: #d8dde3;
+}
+
+.footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: min(1080px, calc(100% - 40px));
+    margin-inline: auto;
+    font-size: 0.82rem;
+}
+
+.footer-inner p {
+    margin: 0;
+}
+
+.demo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.demo-card {
+    min-width: 0;
+    padding: 14px 16px;
+    border: 1px solid var(--line);
+    border-radius: 0;
+    background-color: #fbfaf6;
+}
+
+.demo-card-wide {
+    grid-column: span 3;
+}
+
+.demo-card h3 {
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+.demo-card pre {
+    margin: 0;
+    overflow: auto;
+    color: var(--text);
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 0.78rem;
+    line-height: 1.55;
+    white-space: pre-wrap;
+}
