@@ -583,3 +583,22 @@ select:focus {
     line-height: 1.55;
     white-space: pre-wrap;
 }
+
+::-webkit-scrollbar {
+    width: 11px;
+    height: 11px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #e8e1d4;
+}
+
+::-webkit-scrollbar-thumb {
+    border: 3px solid #e8e1d4;
+    border-radius: 6px;
+    background-color: var(--orange-dark);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--orange);
+}
