@@ -537,3 +537,16 @@ function initMonths() {
     }).join("");
     monthFilter.value = "2";
 }
+
+document.querySelector("#recalcCosts").addEventListener("click", () => {
+    renderCosts();
+});
+
+document.querySelector("#resetProjects").addEventListener("click", () => {
+    projects = initialProjects.map((project) => ({ ...project }));
+    costResults = calculateNewCosts(projects);
+    projectForm.reset();
+    projectStatus.textContent = "";
+    projectStatus.className = "form-status";
+    renderProjects();
+});
