@@ -378,3 +378,20 @@ function renderUsers() {
         return `<tr><td>${escapeHtml(name)}</td><td>${count}</td></tr>`;
     }).join("");
 }
+
+function typeExamples() {
+    const values = [
+        ["string", "JavaScript"],
+        ["number", 42.5],
+        ["boolean", true],
+        ["undefined", undefined],
+        ["symbol", Symbol("id")],
+        ["bigint", 10n],
+        ["object", { language: "JS" }],
+        ["array", [1, 2, 3]],
+        ["function", function example() {}],
+        ["date", new Date(2026, 0, 1)],
+        ["null", null]
+    ];
+    return values.map(([label, value]) => `${label}: ${typeof value}`);
+}
