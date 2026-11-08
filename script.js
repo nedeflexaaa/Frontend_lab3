@@ -597,3 +597,11 @@ projectForm.addEventListener("submit", (event) => {
     projectForm.reset();
     renderProjects();
 });
+
+monthFilter.innerHTML = "";
+timeFrom.value = "09:00";
+timeTo.value = "18:00";
+initMonths();
+renderProjects();
+renderUsers();
+renderDemo();
