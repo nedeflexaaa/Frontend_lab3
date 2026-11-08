@@ -520,3 +520,13 @@ function hoistingExamples() {
     }
     return lines;
 }
+
+function renderDemo() {
+    document.querySelector("#demoTypes").textContent = typeExamples().join("\n");
+    document.querySelector("#demoConversions").textContent = conversionExamples().join("\n");
+    document.querySelector("#demoOperators").textContent = operatorExamples().join("\n");
+    document.querySelector("#demoArray").textContent = arrayExamples().join("\n");
+    document.querySelector("#demoDateMathString").textContent = dateMathStringExamples().join("\n");
+    document.querySelector("#demoImplicit").textContent = implicitExamples().join("\n");
+    document.querySelector("#demoHoisting").textContent = hoistingExamples().join("\n");
+}
