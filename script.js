@@ -319,3 +319,13 @@ function renderCosts() {
         </tr>`;
     }).join("");
 }
+
+function badgeClass(category) {
+    if (category === "Бізнес-активні середнього віку") {
+        return "badge badge-active";
+    }
+    if (category === "Бізнес-пасивні похилого") {
+        return "badge badge-passive";
+    }
+    return "badge badge-other";
+}
