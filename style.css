@@ -302,3 +302,42 @@ code {
     background-color: var(--navy);
     color: #ffffff;
 }
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    margin-bottom: 26px;
+}
+
+.summary-card {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+    padding: 14px 16px;
+    border: 1px solid #cdd9e3;
+    border-left: 4px solid var(--orange);
+    border-radius: 0;
+    background-color: #f3f6f8;
+}
+
+.summary-label {
+    color: var(--muted);
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.summary-card strong {
+    color: var(--navy);
+    font-family: var(--font-heading);
+    font-size: 1.45rem;
+    line-height: 1.15;
+}
+
+.summary-note {
+    color: var(--muted);
+    font-size: 0.8rem;
+}
