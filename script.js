@@ -459,3 +459,22 @@ function arrayExamples() {
         `join(" — ") → ${values.join(" — ")}`
     ];
 }
+
+function dateMathStringExamples() {
+    const date = new Date(2026, 10, 6, 14, 35);
+    return [
+        `Date.toLocaleDateString("uk-UA") → ${date.toLocaleDateString("uk-UA")}`,
+        `Date.getFullYear() → ${date.getFullYear()}`,
+        `Date.getMonth() + 1 → ${date.getMonth() + 1}`,
+        `Date.getDate() → ${date.getDate()}`,
+        `Math.max(3, 7, 2) → ${Math.max(3, 7, 2)}`,
+        `Math.min(3, 7, 2) → ${Math.min(3, 7, 2)}`,
+        `Math.round(4.6) → ${Math.round(4.6)}`,
+        `Math.floor(4.9) → ${Math.floor(4.9)}`,
+        `"  JavaScript  ".trim() → "${"  JavaScript  ".trim()}"`,
+        `"javascript".toUpperCase() → "${"javascript".toUpperCase()}"`,
+        `"a,b,c".split(",") → [${"a,b,c".split(",").join(", ")}]`,
+        `"Frontend".includes("end") → ${"Frontend".includes("end")}`,
+        `"lab".padStart(5, "0") → "${"lab".padStart(5, "0")}"`
+    ];
+}
