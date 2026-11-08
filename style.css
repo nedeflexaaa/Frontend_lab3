@@ -1,0 +1,86 @@
+:root {
+    --navy: #163a5f;
+    --navy-dark: #102a45;
+    --orange: #c2410c;
+    --orange-dark: #9a3412;
+    --paper: #f6f3ec;
+    --surface: #ffffff;
+    --line: #d9d2c3;
+    --text: #2b2a26;
+    --muted: #6f6a5f;
+    --success: #166534;
+    --warning: #9a3412;
+    --font-body: "Segoe UI", Tahoma, Verdana, sans-serif;
+    --font-heading: Georgia, "Times New Roman", serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--navy) #ece6d9;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text);
+    background-color: var(--paper);
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    color: var(--navy);
+    text-underline-offset: 3px;
+}
+
+a:hover {
+    color: var(--orange);
+}
+
+h1,
+h2,
+h3 {
+    margin-top: 0;
+    font-family: var(--font-heading);
+    line-height: 1.2;
+    color: var(--navy);
+}
+
+h1 {
+    margin-bottom: 14px;
+    font-size: clamp(2rem, 4vw, 2.6rem);
+}
+
+h2 {
+    margin-bottom: 16px;
+    font-size: clamp(1.65rem, 3vw, 2.15rem);
+}
+
+h3 {
+    margin-bottom: 10px;
+    font-size: 1.15rem;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 14px;
+}
+
+code {
+    padding: 1px 4px;
+    background-color: #eef3f7;
+    color: var(--navy);
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 0.9em;
+}
