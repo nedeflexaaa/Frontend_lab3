@@ -226,3 +226,13 @@ function calculateNewCosts(list) {
         };
     });
 }
+
+function nextProjectId() {
+    let number = projects.length + 1;
+    let id = `PRJ-${String(number).padStart(2, "0")}`;
+    while (projects.some((project) => project.id === id)) {
+        number += 1;
+        id = `PRJ-${String(number).padStart(2, "0")}`;
+    }
+    return id;
+}
