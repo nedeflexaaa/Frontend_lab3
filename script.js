@@ -86,3 +86,35 @@ class UserAccount {
         return minutes >= 540 && minutes <= 1080;
     }
 }
+
+class UserDirectory {
+    constructor(accounts) {
+        this.accounts = accounts;
+    }
+
+    filterByMonthAndTime(month, from, to) {
+        return this.accounts.filter((account) => {
+            const sameMonth = account.contactedAt.getMonth() === Number(month);
+            return sameMonth && account.time >= from && account.time <= to;
+        });
+    }
+
+    getMaxDetailsUser() {
+        return this.accounts.reduce((maximum, account) => {
+            return account.detailsLength > maximum.detailsLength ? account : maximum;
+        }, this.accounts[0]);
+    }
+
+    getCategoryCounts() {
+        return this.accounts.reduce((counts, account) => {
+            counts[account.category] = (counts[account.category] || 0) + 1;
+            return counts;
+        }, {});
+    }
+
+    sortedAlphabetically() {
+        return [...this.accounts].sort((first, second) => {
+            return first.fullName.localeCompare(second.fullName, "uk");
+        });
+    }
+}
