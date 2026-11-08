@@ -550,3 +550,14 @@ document.querySelector("#resetProjects").addEventListener("click", () => {
     projectStatus.className = "form-status";
     renderProjects();
 });
+
+document.querySelector("#filterUsers").addEventListener("click", () => {
+    renderUsers();
+});
+
+document.querySelector("#resetUsers").addEventListener("click", () => {
+    monthFilter.value = "2";
+    timeFrom.value = "09:00";
+    timeTo.value = "18:00";
+    renderUsers();
+});
