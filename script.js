@@ -561,3 +561,39 @@ document.querySelector("#resetUsers").addEventListener("click", () => {
     timeTo.value = "18:00";
     renderUsers();
 });
+
+projectForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const data = new FormData(projectForm);
+    const values = ["id", "name", "country", "teamSize", "durationMonths", "cost"].map((name) => {
+        return String(data.get(name) || "").trim();
+    });
+    const [id, name, country, teamSize, durationMonths, cost] = values;
+    const complete = values.every((value) => value !== "");
+    const nextProject = {
+        id: id || nextProjectId(),
+        name: name || "Без назви",
+        country: country || "Не вказано",
+        teamSize: Number(teamSize) || 0,
+        durationMonths: Number(durationMonths) || 0,
+        cost: Number(cost) || 0
+    };
+
+    if (complete) {
+        const index = projects.findIndex((project) => project.cost > nextProject.cost);
+        if (index === -1) {
+            projects.push(nextProject);
+        } else {
+            projects.splice(index, 0, nextProject);
+        }
+        projectStatus.textContent = "Повний запис вставлено за зростанням вартості.";
+        projectStatus.className = "form-status is-success";
+    } else {
+        projects.push(nextProject);
+        projectStatus.textContent = "Неповний запис додано в кінець списку.";
+        projectStatus.className = "form-status is-warning";
+    }
+
+    projectForm.reset();
+    renderProjects();
+});
