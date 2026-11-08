@@ -23,3 +23,66 @@ const initialUsers = [
     ["Романенко", "Ірина", 34, "вища", 240, "2026-03-09", "15:25"],
     ["Павленко", "Олег", 67, "середня", 100, "2026-01-20", "09:45"]
 ];
+
+class UserAccount {
+    constructor(surname, name, age, education, detailsLength, date, time) {
+        this.surname = surname;
+        this.name = name;
+        this.age = Number(age);
+        this.education = education;
+        this.detailsLength = Number(detailsLength);
+        this.date = date;
+        this.time = time;
+        this.contactedAt = new Date(`${date}T${time}:00`);
+    }
+
+    get fullName() {
+        return `${this.surname} ${this.name}`;
+    }
+
+    get birthYear() {
+        return new Date().getFullYear() - this.age;
+    }
+
+    get season() {
+        switch (this.contactedAt.getMonth()) {
+            case 11:
+            case 0:
+            case 1:
+                return "зима";
+            case 2:
+            case 3:
+            case 4:
+                return "весна";
+            case 5:
+            case 6:
+            case 7:
+                return "літо";
+            default:
+                return "осінь";
+        }
+    }
+
+    get category() {
+        if (this.age >= 35 && this.age <= 55 && ["осінь", "зима", "весна"].includes(this.season)) {
+            return "Бізнес-активні середнього віку";
+        }
+        if (this.season === "літо") {
+            return "Бізнес-пасивні похилого";
+        }
+        return "Інші";
+    }
+
+    get formattedDate() {
+        return this.contactedAt.toLocaleDateString("uk-UA", {
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric"
+        });
+    }
+
+    get workingHours() {
+        const minutes = this.contactedAt.getHours() * 60 + this.contactedAt.getMinutes();
+        return minutes >= 540 && minutes <= 1080;
+    }
+}
