@@ -329,3 +329,52 @@ function badgeClass(category) {
     }
     return "badge badge-other";
 }
+
+function renderUsers() {
+    const month = Number(monthFilter.value);
+    const from = timeFrom.value || "00:00";
+    const to = timeTo.value || "23:59";
+    const selected = directory.filterByMonthAndTime(month, from, to);
+    const maximum = directory.getMaxDetailsUser();
+    const counts = directory.getCategoryCounts();
+
+    filterPeriod.textContent = `${capitalize(monthNames[month])} · ${from}–${to}`;
+    filteredCaption.textContent = `Звернення: ${monthNames[month]}, ${from}–${to} (${selected.length})`;
+    filteredUsers.innerHTML = selected.length
+        ? selected.map((user) => {
+            return `<tr>
+                <td>${escapeHtml(user.surname)}</td>
+                <td>${escapeHtml(user.name)}</td>
+                <td>${user.age}</td>
+                <td>${escapeHtml(user.education)}</td>
+                <td>${user.detailsLength}</td>
+                <td>${escapeHtml(user.formattedDate)}</td>
+                <td>${escapeHtml(user.time)}</td>
+                <td><span class="${badgeClass(user.category)}">${escapeHtml(user.category)}</span></td>
+            </tr>`;
+        }).join("")
+        : `<tr><td colspan="8">За вибраний місяць і період часу звернень немає.</td></tr>`;
+
+    maxDetailsValue.textContent = `${maximum.detailsLength} символів`;
+    maxDetailsNote.textContent = `${maximum.fullName} · ${maximum.age} років · ${maximum.education} освіта`;
+    activeCount.textContent = String(counts["Бізнес-активні середнього віку"] || 0);
+    passiveCount.textContent = String(counts["Бізнес-пасивні похилого"] || 0);
+    otherCount.textContent = String(counts["Інші"] || 0);
+
+    sortedUsers.innerHTML = directory.sortedAlphabetically().map((user) => {
+        return `<tr>
+            <td>${escapeHtml(user.fullName)}</td>
+            <td>${user.age}</td>
+            <td>${user.birthYear}</td>
+            <td>${escapeHtml(user.education)}</td>
+        </tr>`;
+    }).join("");
+
+    classTable.innerHTML = [
+        ["Бізнес-активні середнього віку", counts["Бізнес-активні середнього віку"] || 0],
+        ["Бізнес-пасивні похилого", counts["Бізнес-пасивні похилого"] || 0],
+        ["Інші", counts["Інші"] || 0]
+    ].map(([name, count]) => {
+        return `<tr><td>${escapeHtml(name)}</td><td>${count}</td></tr>`;
+    }).join("");
+}
