@@ -267,3 +267,42 @@ const maxDetailsNote = document.querySelector("#maxDetailsNote");
 const activeCount = document.querySelector("#activeCount");
 const passiveCount = document.querySelector("#passiveCount");
 const otherCount = document.querySelector("#otherCount");
+
+function renderProjects() {
+    const sorted = sortProjectsByCountry(projects);
+    const maxTeam = Math.max(...projects.map((project) => project.teamSize));
+    const maxProject = projects.find((project) => project.teamSize === maxTeam);
+    const teamGroups = groupProjectsByTeam(sorted);
+    const repeatedGroup = teamGroups.find((group) => group.items.length > 1) || teamGroups[0];
+
+    maxTeamValue.textContent = `${maxTeam} осіб`;
+    maxTeamNote.textContent = `${maxProject.name} · ${maxProject.country}`;
+    maxTeamId.textContent = maxProject.id;
+    maxTeamName.textContent = maxProject.name;
+    teamAverageValue.textContent = formatMoney(repeatedGroup.average);
+    teamAverageNote.textContent = `${repeatedGroup.country} · ${repeatedGroup.teamSize} осіб · ${repeatedGroup.items.length} проєкти`;
+    projectCount.textContent = String(projects.length);
+
+    projectsTable.innerHTML = sorted.map((project) => {
+        return `<tr>
+            <td><strong>${escapeHtml(project.id)}</strong></td>
+            <td>${escapeHtml(project.name)}</td>
+            <td>${escapeHtml(project.country)}</td>
+            <td>${escapeHtml(getContinent(project.country))}</td>
+            <td>${escapeHtml(project.teamSize)}</td>
+            <td>${escapeHtml(project.durationMonths)} міс.</td>
+            <td>${formatMoney(project.cost)}</td>
+        </tr>`;
+    }).join("");
+
+    teamAverages.innerHTML = teamGroups.map((group) => {
+        return `<tr>
+            <td>${escapeHtml(group.country)}</td>
+            <td>${escapeHtml(group.teamSize)} осіб</td>
+            <td>${group.items.length}</td>
+            <td>${formatMoney(group.average)}</td>
+        </tr>`;
+    }).join("");
+
+    renderCosts();
+}
