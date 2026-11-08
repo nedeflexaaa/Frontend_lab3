@@ -252,3 +252,53 @@ code {
     margin-bottom: 22px;
     color: var(--muted);
 }
+
+.button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 11px 18px;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.btn:focus-visible {
+    outline: 2px dashed var(--orange);
+    outline-offset: 3px;
+}
+
+.btn-primary {
+    border-color: var(--orange);
+    background-color: var(--orange);
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    border-color: var(--orange-dark);
+    background-color: var(--orange-dark);
+    color: #ffffff;
+}
+
+.btn-ghost {
+    border-color: var(--navy);
+    background-color: transparent;
+    color: var(--navy);
+}
+
+.btn-ghost:hover {
+    border-color: var(--navy);
+    background-color: var(--navy);
+    color: #ffffff;
+}
