@@ -118,3 +118,18 @@ class UserDirectory {
         });
     }
 }
+
+const monthNames = Array.from({ length: 12 }, (_, index) => {
+    return new Intl.DateTimeFormat("uk-UA", { month: "long" }).format(new Date(2026, index, 1));
+});
+
+const capitalize = (value) => value.charAt(0).toUpperCase() + value.slice(1);
+
+const formatMoney = function (value) {
+    return `${Number(value).toLocaleString("uk-UA", { maximumFractionDigits: 2 })} тис. $`;
+};
+
+const escapeHtml = (value) => {
+    const symbols = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" };
+    return String(value).replace(/[&<>"']/g, (symbol) => symbols[symbol]);
+};
