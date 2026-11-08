@@ -236,3 +236,8 @@ function nextProjectId() {
     }
     return id;
 }
+
+let projects = initialProjects.map((project) => ({ ...project }));
+let users = initialUsers.map((data) => new UserAccount(...data));
+let directory = new UserDirectory(users);
+let costResults = calculateNewCosts(projects);
