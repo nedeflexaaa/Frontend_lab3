@@ -395,3 +395,14 @@ function typeExamples() {
     ];
     return values.map(([label, value]) => `${label}: ${typeof value}`);
 }
+
+function conversionExamples() {
+    return [
+        `Number("42.5") → ${Number("42.5")}`,
+        `String(2026) → ${String(2026)}`,
+        `Boolean(0) → ${Boolean(0)}`,
+        `parseInt("15px", 10) → ${parseInt("15px", 10)}`,
+        `parseFloat("3.14 kg") → ${parseFloat("3.14 kg")}`,
+        `Number.isNaN(Number("abc")) → ${Number.isNaN(Number("abc"))}`
+    ];
+}
