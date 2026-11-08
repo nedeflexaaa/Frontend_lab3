@@ -490,3 +490,33 @@ function implicitExamples() {
         `[] + {} → ${[] + {}}`
     ];
 }
+
+function hoistingExamples() {
+    const lines = [];
+    lines.push(`typeof beforeVar → ${typeof beforeVar}`);
+    var beforeVar = 5;
+    lines.push(`beforeVar after assignment → ${beforeVar}`);
+    lines.push(`function before declaration → ${declaredBefore()}`);
+    function declaredBefore() {
+        return "доступна";
+    }
+    try {
+        lines.push(`typeof beforeLet → ${typeof beforeLet}`);
+    } catch (error) {
+        lines.push(`beforeLet → ${error.name}`);
+    }
+    let beforeLet = 10;
+    lines.push(`beforeLet after assignment → ${beforeLet}`);
+    if (true) {
+        var functionScoped = "var видно після блоку";
+        let blockScoped = "let видно тільки в блоці";
+        lines.push(blockScoped);
+    }
+    lines.push(functionScoped);
+    try {
+        lines.push(blockScoped);
+    } catch (error) {
+        lines.push(`blockScoped після блоку → ${error.name}`);
+    }
+    return lines;
+}
