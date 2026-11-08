@@ -152,3 +152,77 @@ function getContinent(country) {
             return "Не визначено";
     }
 }
+
+const compareProjects = (first, second) => {
+    return first.country.localeCompare(second.country, "uk") || first.name.localeCompare(second.name, "uk");
+};
+
+function sortProjectsByCountry(list) {
+    return [...list].sort(compareProjects);
+}
+
+function groupProjectsByTeam(list) {
+    const groups = new Map();
+    for (const project of list) {
+        const key = `${project.country} / ${project.teamSize}`;
+        if (!groups.has(key)) {
+            groups.set(key, { country: project.country, teamSize: project.teamSize, items: [] });
+        }
+        groups.get(key).items.push(project);
+    }
+    return [...groups.values()].map((group) => {
+        const total = group.items.reduce((sum, project) => sum + project.cost, 0);
+        return {
+            ...group,
+            average: Math.round((total / group.items.length) * 100) / 100
+        };
+    });
+}
+
+function calculateNewCosts(list) {
+    return list.map((project) => {
+        const others = list.filter((item) => item.id !== project.id);
+        const country = getContinent(project.country);
+        const sameCountryLower = others.some((item) => {
+            return item.country === project.country && item.cost < project.cost;
+        });
+        const sameContinentLower = others.some((item) => {
+            return item.country !== project.country &&
+                getContinent(item.country) === country &&
+                item.teamSize > project.teamSize &&
+                item.cost < project.cost;
+        });
+        const otherContinentLower = others.some((item) => {
+            return getContinent(item.country) !== country &&
+                item.teamSize > project.teamSize &&
+                item.cost < project.cost;
+        });
+        const otherContinentHigher = others.some((item) => {
+            return getContinent(item.country) !== country &&
+                item.teamSize > project.teamSize &&
+                item.cost > project.cost;
+        });
+        let multiplier = 1;
+        let rule = "без змін";
+        if (sameCountryLower) {
+            multiplier = 0.8;
+            rule = "та ж країна, менша вартість";
+        } else if (sameContinentLower) {
+            multiplier = 1.4;
+            rule = "той самий континент, більша команда, менша вартість";
+        } else if (otherContinentLower) {
+            multiplier = 1.6;
+            rule = "різні континенти, більша команда, менша вартість";
+        } else if (otherContinentHigher) {
+            multiplier = 2;
+            rule = "різні континенти, більша команда, більша вартість";
+        }
+        return {
+            ...project,
+            oldCost: project.cost,
+            multiplier,
+            rule,
+            newCost: Math.round(project.cost * multiplier * 100) / 100
+        };
+    });
+}
