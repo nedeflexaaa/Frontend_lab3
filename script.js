@@ -530,3 +530,10 @@ function renderDemo() {
     document.querySelector("#demoImplicit").textContent = implicitExamples().join("\n");
     document.querySelector("#demoHoisting").textContent = hoistingExamples().join("\n");
 }
+
+function initMonths() {
+    monthFilter.innerHTML = monthNames.map((name, index) => {
+        return `<option value="${index}">${capitalize(name)}</option>`;
+    }).join("");
+    monthFilter.value = "2";
+}
