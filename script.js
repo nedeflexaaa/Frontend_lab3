@@ -478,3 +478,15 @@ function dateMathStringExamples() {
         `"lab".padStart(5, "0") → "${"lab".padStart(5, "0")}"`
     ];
 }
+
+function implicitExamples() {
+    return [
+        `"5" + 2 → ${"5" + 2}`,
+        `"5" - 2 → ${"5" - 2}`,
+        `"5" * "2" → ${"5" * "2"}`,
+        `"0" == false → ${"0" == false}`,
+        `!"" → ${!""}`,
+        `null + 1 → ${null + 1}`,
+        `[] + {} → ${[] + {}}`
+    ];
+}
