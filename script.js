@@ -406,3 +406,32 @@ function conversionExamples() {
         `Number.isNaN(Number("abc")) → ${Number.isNaN(Number("abc"))}`
     ];
 }
+
+function operatorExamples() {
+    let total = 10;
+    total += 5;
+    const afterAdd = total;
+    total *= 2;
+    const afterMultiply = total;
+    total -= 4;
+    const afterSubtract = total;
+    total /= 2;
+    const afterDivide = total;
+    return [
+        `10 + 5 = ${10 + 5}`,
+        `10 - 4 = ${10 - 4}`,
+        `10 * 3 = ${10 * 3}`,
+        `10 / 4 = ${10 / 4}`,
+        `10 % 3 = ${10 % 3}`,
+        `2 ** 5 = ${2 ** 5}`,
+        `total += 5 → ${afterAdd}`,
+        `total *= 2 → ${afterMultiply}`,
+        `total -= 4 → ${afterSubtract}`,
+        `total /= 2 → ${afterDivide}`,
+        `5 === 5 → ${5 === 5}`,
+        `5 !== "5" → ${5 !== "5"}`,
+        `3 < 4 → ${3 < 4}`,
+        `4 >= 4 → ${4 >= 4}`,
+        `"apple" < "banana" → ${"apple" < "banana"}`
+    ];
+}
