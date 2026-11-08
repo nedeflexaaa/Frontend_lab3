@@ -127,6 +127,100 @@
                 <p class="form-status" id="projectStatus" role="status" aria-live="polite"></p>
             </form>
         </section>
+
+        <section class="panel" id="users" aria-labelledby="users-title">
+            <div class="section-head">
+                <div>
+                    <p class="section-kicker">Завдання 2</p>
+                    <h2 id="users-title">Користувачі та звернення</h2>
+                </div>
+                <div class="button-row">
+                    <button class="btn btn-primary" id="filterUsers" type="button">Показати вибірку</button>
+                    <button class="btn btn-ghost" id="resetUsers" type="button">Скинути фільтр</button>
+                </div>
+            </div>
+            <p class="section-lead">
+                Клас <code>UserAccount</code> описує властивості та методи користувача,
+                а <code>UserDirectory</code> — фільтрацію, пошук максимуму, класифікацію
+                та алфавітне сортування.
+            </p>
+
+            <div class="filter-bar">
+                <label>Місяць
+                    <select id="monthFilter"></select>
+                </label>
+                <label>Час від
+                    <input id="timeFrom" type="time" value="09:00">
+                </label>
+                <label>Час до
+                    <input id="timeTo" type="time" value="18:00">
+                </label>
+                <span class="filter-period" id="filterPeriod">Березень · 09:00–18:00</span>
+            </div>
+
+            <div class="summary-grid" id="userSummary">
+                <article class="summary-card">
+                    <span class="summary-label">Максимальна довжина деталей</span>
+                    <strong id="maxDetailsValue">—</strong>
+                    <span class="summary-note" id="maxDetailsNote">—</span>
+                </article>
+                <article class="summary-card">
+                    <span class="summary-label">Бізнес-активні</span>
+                    <strong id="activeCount">—</strong>
+                    <span class="summary-note">35–55, осінь/зима/весна</span>
+                </article>
+                <article class="summary-card">
+                    <span class="summary-label">Бізнес-пасивні</span>
+                    <strong id="passiveCount">—</strong>
+                    <span class="summary-note">літні звернення</span>
+                </article>
+                <article class="summary-card">
+                    <span class="summary-label">Інші</span>
+                    <strong id="otherCount">—</strong>
+                    <span class="summary-note">решта випадків</span>
+                </article>
+            </div>
+
+            <div class="table-block">
+                <h3>Вибірка за місяцем і часом</h3>
+                <div class="table-wrap">
+                    <table>
+                        <caption id="filteredCaption">Звернення за вибраний період</caption>
+                        <thead>
+                            <tr><th>Прізвище</th><th>Ім’я</th><th>Вік</th><th>Освіта</th><th>Деталей</th><th>Дата</th><th>Час</th><th>Клас</th></tr>
+                        </thead>
+                        <tbody id="filteredUsers"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="table-block">
+                    <h3>Алфавітний порядок</h3>
+                    <div class="table-wrap">
+                        <table>
+                            <caption>Прізвище, ім’я та приблизний рік народження</caption>
+                            <thead>
+                                <tr><th>ПІБ</th><th>Вік</th><th>Рік народження</th><th>Освіта</th></tr>
+                            </thead>
+                            <tbody id="sortedUsers"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="table-block">
+                    <h3>Розподіл за класами</h3>
+                    <div class="table-wrap">
+                        <table>
+                            <caption>Кількість користувачів</caption>
+                            <thead>
+                                <tr><th>Клас</th><th>Кількість</th></tr>
+                            </thead>
+                            <tbody id="classTable"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="site-footer">
