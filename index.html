@@ -109,7 +109,23 @@
                 </div>
             </div>
 
-            
+            <form class="project-form" id="projectForm">
+                <h3>Додати новий проєкт</h3>
+                <p class="form-note">Порожнє поле означає неповні дані: запис буде додано в кінець. Якщо заповнено все — запис вставляється за зростанням вартості.</p>
+                <div class="form-grid">
+                    <label>ID <input id="newId" name="id" type="text" placeholder="PRJ-11"></label>
+                    <label>Назва <input id="newName" name="name" type="text" placeholder="Новий проєкт"></label>
+                    <label>Країна <input id="newCountry" name="country" type="text" placeholder="Україна"></label>
+                    <label>Команда, осіб <input id="newTeam" name="teamSize" type="number" min="1" step="1" placeholder="8"></label>
+                    <label>Тривалість, міс. <input id="newDuration" name="durationMonths" type="number" min="1" step="1" placeholder="12"></label>
+                    <label>Вартість, тис. $ <input id="newCost" name="cost" type="number" min="0" step="0.1" placeholder="180"></label>
+                </div>
+                <div class="button-row form-actions">
+                    <button class="btn btn-primary" type="submit">Додати проєкт</button>
+                    <button class="btn btn-ghost" type="reset">Очистити</button>
+                </div>
+                <p class="form-status" id="projectStatus" role="status" aria-live="polite"></p>
+            </form>
         </section>
     </main>
 
